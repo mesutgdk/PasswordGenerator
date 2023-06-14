@@ -9,10 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let passwordView = PasswordView()
+    let passwordTextView = PasswordTextView(placeHolderText:"New Password")
     
     var password : String? {
-        return passwordView.passwordtextField.text
+        return passwordTextView.passwordTextField.text
     }
     
     override func viewDidLoad() {
@@ -23,17 +23,17 @@ class ViewController: UIViewController {
 }
 extension ViewController {
     private func style(){
-        passwordView.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func layout() {
-        view.addSubview(passwordView)
+        view.addSubview(passwordTextView)
         
         NSLayoutConstraint.activate([
-            passwordView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: passwordView.trailingAnchor, multiplier: 2),
-//            view.topAnchor.constraint(equalToSystemSpacingBelow: passwordView.topAnchor, multiplier: 2)
-            passwordView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+            passwordTextView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: passwordTextView.trailingAnchor, multiplier: 2),
+            view.centerYAnchor.constraint(equalToSystemSpacingBelow: passwordTextView.centerYAnchor, multiplier: 2)
+//            passwordView2.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
         ])
     }
     

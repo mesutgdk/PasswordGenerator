@@ -11,7 +11,7 @@
 		63A13B722A39CBEB00285909 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B712A39CBEB00285909 /* ViewController.swift */; };
 		63A13B772A39CBED00285909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63A13B762A39CBED00285909 /* Assets.xcassets */; };
 		63A13B7A2A39CBED00285909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A13B782A39CBED00285909 /* LaunchScreen.storyboard */; };
-		63A13B832A39EDD400285909 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B822A39EDD400285909 /* PasswordView.swift */; };
+		63A13B852A3A4FC200285909 /* PasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B842A3A4FC200285909 /* PasswordTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		63A13B762A39CBED00285909 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63A13B792A39CBED00285909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63A13B7B2A39CBED00285909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63A13B822A39EDD400285909 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		63A13B842A3A4FC200285909 /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 				63A13B812A39E65700285909 /* Files */,
 				63A13B6D2A39CBEB00285909 /* AppDelegate.swift */,
 				63A13B712A39CBEB00285909 /* ViewController.swift */,
-				63A13B822A39EDD400285909 /* PasswordView.swift */,
+				63A13B842A3A4FC200285909 /* PasswordTextView.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -143,7 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A13B722A39CBEB00285909 /* ViewController.swift in Sources */,
-				63A13B832A39EDD400285909 /* PasswordView.swift in Sources */,
+				63A13B852A3A4FC200285909 /* PasswordTextView.swift in Sources */,
 				63A13B6E2A39CBEB00285909 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
