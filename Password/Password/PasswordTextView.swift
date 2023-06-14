@@ -31,7 +31,7 @@ class PasswordTextView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 60)
+        return CGSize(width: 200, height: 50)
     }
 }
 extension PasswordTextView {
@@ -54,16 +54,20 @@ extension PasswordTextView {
         eyeButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
-        dividerView.backgroundColor = .secondarySystemFill
+        dividerView.backgroundColor = .separator
         
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        errorLabel.textAlignment = .left
+//        errorLabel.textAlignment = .left
         errorLabel.textColor = .systemRed
+        errorLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         errorLabel.numberOfLines = 0
         errorLabel.text = "Enter your password"
+        errorLabel.adjustsFontSizeToFitWidth = true
+        errorLabel.minimumScaleFactor = 0.8
+        errorLabel.isHidden = false
         
         
-        layer.cornerRadius = 5
+//        layer.cornerRadius = 5
         clipsToBounds = true
     }
     func layout() {
@@ -106,7 +110,7 @@ extension PasswordTextView {
             errorLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-        //CHCR
+        //CHCR  who will hug, who will loose
         padlockImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         passwordTextField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         eyeButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
