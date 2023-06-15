@@ -14,11 +14,29 @@ class StatusView: UIView {
     let imageView = UIImageView()
     let label = UILabel()
     
-    let checkImage: UIImage
+//    let checkImage: UIImage
     let statusLabelText: String
     
-    init(checkImage: UIImage, statusLabelText: String) {
-        self.checkImage = checkImage
+    let checkmarkImage = UIImage(systemName: "checkmark.circle")!.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+    let xmarkImage = UIImage(systemName: "xmark.circle")!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+    let circleImage = UIImage(systemName: "circle")!.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+    
+    var isCriteriaOK: Bool = false {
+        didSet {
+            if isCriteriaOK {
+                imageView.image = checkmarkImage
+            }else {
+                imageView.image = xmarkImage
+            }
+        }
+    }
+    
+    func reset() {
+        isCriteriaOK = false
+        imageView.image = circleImage
+    }
+    
+    init(statusLabelText: String) {
         self.statusLabelText = statusLabelText
         
         super.init(frame: .zero)
@@ -30,7 +48,7 @@ class StatusView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 50)
+        return CGSize(width: 200, height: 35)
     }
 }
 extension StatusView {
@@ -42,7 +60,7 @@ extension StatusView {
         stackView.spacing = 8
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = checkImage
+//        imageView.image = xmarkImage
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
@@ -51,10 +69,10 @@ extension StatusView {
         label.text = statusLabelText
         label.textColor = .secondaryLabel
 //        statusLabel.adjustsFontSizeToFitWidth = true // fazla uzun labellarda sığdırır
-//        statusLabel.numberOfLines = 0
-//        statusLabel.minimumScaleFactor = 0.8
-//        statusLabel.lineBreakMode = .byWordWrapping
-        label.isHidden = false
+        label.numberOfLines = 0
+        label.minimumScaleFactor = 0.8
+//        label.lineBreakMode = .byWordWrapping
+//        label.isHidden = false
         
     }
     func layout() {
@@ -79,4 +97,8 @@ extension StatusView {
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
         ])
     }
+}
+// Actions
+extension StatusView{
+   
 }

@@ -13,6 +13,7 @@
 		63A13B7A2A39CBED00285909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A13B782A39CBED00285909 /* LaunchScreen.storyboard */; };
 		63A13B852A3A4FC200285909 /* PasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B842A3A4FC200285909 /* PasswordTextView.swift */; };
 		63A13B872A3B8FCA00285909 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B862A3B8FCA00285909 /* StatusView.swift */; };
+		63A13B8A2A3BAB3F00285909 /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B892A3BAB3F00285909 /* PasswordStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		63A13B7B2A39CBED00285909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A13B842A3A4FC200285909 /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
 		63A13B862A3B8FCA00285909 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		63A13B892A3BAB3F00285909 /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				63A13B862A3B8FCA00285909 /* StatusView.swift */,
+				63A13B892A3BAB3F00285909 /* PasswordStatusView.swift */,
 			);
 			path = PasswordStatusView;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				63A13B722A39CBEB00285909 /* ViewController.swift in Sources */,
 				63A13B852A3A4FC200285909 /* PasswordTextView.swift in Sources */,
 				63A13B872A3B8FCA00285909 /* StatusView.swift in Sources */,
+				63A13B8A2A3BAB3F00285909 /* PasswordStatusView.swift in Sources */,
 				63A13B6E2A39CBEB00285909 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

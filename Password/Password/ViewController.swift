@@ -10,15 +10,13 @@ import UIKit
 class ViewController: UIViewController {
     
     let stackView = UIStackView()
+    let button = UIButton(type: .system)
+    
+    let passwordStatusView = PasswordStatusView()
     
     let passwordTextView = PasswordTextView(placeHolderText:"New Password",errorLabelIsHidden: false)
-    
     let passwordTextView2 = PasswordTextView(placeHolderText: "New View",errorLabelIsHidden: true)
     
-    let statusView1 = StatusView(checkImage: UIImage(systemName: "eye.circle")!.withTintColor(.tertiaryLabel,renderingMode: .alwaysOriginal), statusLabelText: "upper letter (A-Z)")
-    let statusView2 = StatusView(checkImage: UIImage(systemName: "eye.circle")!, statusLabelText: "222")
-    
-    let button = UIButton(type: .system)
     
     var password : String? {
         return passwordTextView.passwordTextField.text
@@ -37,14 +35,11 @@ extension ViewController {
         stackView.axis = .vertical
         stackView.spacing = 20
         
-        
         passwordTextView.translatesAutoresizingMaskIntoConstraints = false
         passwordTextView2.translatesAutoresizingMaskIntoConstraints = false
         
-        statusView1.translatesAutoresizingMaskIntoConstraints = false
-        statusView2.translatesAutoresizingMaskIntoConstraints = false
-
-        
+        passwordStatusView.translatesAutoresizingMaskIntoConstraints = false
+    
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .filled()
         button.configuration?.imagePadding = 8 // for indicator spacing
@@ -53,21 +48,24 @@ extension ViewController {
     }
     
     private func layout() {
-      
+//
         stackView.addArrangedSubview(passwordTextView)
-        stackView.addArrangedSubview(statusView1)
-        stackView.addArrangedSubview(statusView2)
+        stackView.addArrangedSubview(passwordStatusView)
         stackView.addArrangedSubview(passwordTextView2)
         stackView.addArrangedSubview(button)
         view.addSubview(stackView)
         
-        //StackView
+//        StackView
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2)
-            
+
         ])
+//        NSLayoutConstraint.activate([
+//            passwordStatusView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            passwordStatusView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//        ])
     }
 }
 //Actions
