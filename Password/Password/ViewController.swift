@@ -9,7 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let passwordTextView = PasswordTextView(placeHolderText:"New Password")
+    let stackView = UIStackView()
+    
+    let passwordTextView = PasswordTextView(placeHolderText:"New Password",errorLabelIsHidden: false)
+    
+    let PasswordTextView2 = PasswordTextView(placeHolderText: "New View",errorLabelIsHidden: true)
+    
+    let button = UIButton(type: .system)
+    let dividerView = UIView()
     
     var password : String? {
         return passwordTextView.passwordTextField.text
@@ -23,19 +30,45 @@ class ViewController: UIViewController {
 }
 extension ViewController {
     private func style(){
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        
         passwordTextView.translatesAutoresizingMaskIntoConstraints = false
+
+        
+        dividerView.translatesAutoresizingMaskIntoConstraints = false
+        dividerView.backgroundColor = .separator
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = .filled()
+        button.configuration?.imagePadding = 8 // for indicator spacing
+        button.setTitle("Reset Password", for: [])
+        button.addTarget(self, action: #selector(resetPassword), for: .primaryActionTriggered)
     }
     
     private func layout() {
-        view.addSubview(passwordTextView)
         
+        stackView.addArrangedSubview(passwordTextView)
+        stackView.addArrangedSubview(dividerView)
+        stackView.addArrangedSubview(PasswordTextView2)
+        stackView.addArrangedSubview(button)
+        view.addSubview(stackView)
+        
+        //StackView
         NSLayoutConstraint.activate([
-            passwordTextView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: passwordTextView.trailingAnchor, multiplier: 2),
-            view.centerYAnchor.constraint(equalToSystemSpacingBelow: passwordTextView.centerYAnchor, multiplier: 2)
-//            passwordView2.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2)
+            
         ])
     }
-    
+}
+//Actions
+extension ViewController {
+    @objc func resetPassword(){
+        
+    }
 }
 

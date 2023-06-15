@@ -18,9 +18,11 @@ class PasswordTextView: UIView {
     let eyeButton = UIButton(type: .custom)
     
     let placeHolderText: String
+    let errorLabelIsHidden: Bool
     
-    init(placeHolderText: String) {
+    init(placeHolderText: String, errorLabelIsHidden: Bool) {
         self.placeHolderText = placeHolderText
+        self.errorLabelIsHidden = errorLabelIsHidden
         
         super.init(frame: .zero)
         
@@ -31,13 +33,13 @@ class PasswordTextView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 50)
+        return CGSize(width: 200, height: 55)
     }
 }
 extension PasswordTextView {
     func style(){
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemOrange
+//        backgroundColor = .systemOrange
         
         padlockImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -60,14 +62,15 @@ extension PasswordTextView {
 //        errorLabel.textAlignment = .left
         errorLabel.textColor = .systemRed
         errorLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        errorLabel.text = "Your password must meet requirements below"
+        errorLabel.adjustsFontSizeToFitWidth = true // fazla uzun labellarda sığdırır
         errorLabel.numberOfLines = 0
-        errorLabel.text = "Enter your password"
-        errorLabel.adjustsFontSizeToFitWidth = true
         errorLabel.minimumScaleFactor = 0.8
-        errorLabel.isHidden = false
+        errorLabel.lineBreakMode = .byWordWrapping
+        errorLabel.isHidden = errorLabelIsHidden
         
         
-//        layer.cornerRadius = 5
+        layer.cornerRadius = 5
         clipsToBounds = true
     }
     func layout() {
@@ -107,7 +110,7 @@ extension PasswordTextView {
             errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorLabel.topAnchor.constraint(equalTo: dividerView.bottomAnchor, constant: 4),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            errorLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            bottomAnchor.constraint(equalToSystemSpacingBelow: errorLabel.bottomAnchor, multiplier: 1)
         ])
         
         //CHCR  who will hug, who will loose
