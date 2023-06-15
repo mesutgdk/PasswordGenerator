@@ -12,6 +12,7 @@
 		63A13B772A39CBED00285909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63A13B762A39CBED00285909 /* Assets.xcassets */; };
 		63A13B7A2A39CBED00285909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A13B782A39CBED00285909 /* LaunchScreen.storyboard */; };
 		63A13B852A3A4FC200285909 /* PasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B842A3A4FC200285909 /* PasswordTextView.swift */; };
+		63A13B872A3B8FCA00285909 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B862A3B8FCA00285909 /* StatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		63A13B792A39CBED00285909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63A13B7B2A39CBED00285909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A13B842A3A4FC200285909 /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
+		63A13B862A3B8FCA00285909 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				63A13B6D2A39CBEB00285909 /* AppDelegate.swift */,
 				63A13B712A39CBEB00285909 /* ViewController.swift */,
 				63A13B842A3A4FC200285909 /* PasswordTextView.swift */,
+				63A13B882A3B997F00285909 /* PasswordStatusView */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -70,6 +73,14 @@
 				63A13B762A39CBED00285909 /* Assets.xcassets */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		63A13B882A3B997F00285909 /* PasswordStatusView */ = {
+			isa = PBXGroup;
+			children = (
+				63A13B862A3B8FCA00285909 /* StatusView.swift */,
+			);
+			path = PasswordStatusView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +155,7 @@
 			files = (
 				63A13B722A39CBEB00285909 /* ViewController.swift in Sources */,
 				63A13B852A3A4FC200285909 /* PasswordTextView.swift in Sources */,
+				63A13B872A3B8FCA00285909 /* StatusView.swift in Sources */,
 				63A13B6E2A39CBEB00285909 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

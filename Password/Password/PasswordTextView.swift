@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 import UIKit
 
 class PasswordTextView: UIView {
@@ -59,7 +58,7 @@ extension PasswordTextView {
         dividerView.backgroundColor = .separator
         
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
-//        errorLabel.textAlignment = .left
+        errorLabel.textAlignment = .left
         errorLabel.textColor = .systemRed
         errorLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         errorLabel.text = "Your password must meet requirements below"

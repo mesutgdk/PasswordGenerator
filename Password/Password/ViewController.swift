@@ -13,10 +13,12 @@ class ViewController: UIViewController {
     
     let passwordTextView = PasswordTextView(placeHolderText:"New Password",errorLabelIsHidden: false)
     
-    let PasswordTextView2 = PasswordTextView(placeHolderText: "New View",errorLabelIsHidden: true)
+    let passwordTextView2 = PasswordTextView(placeHolderText: "New View",errorLabelIsHidden: true)
+    
+    let statusView1 = StatusView(checkImage: UIImage(systemName: "eye.circle")!.withTintColor(.tertiaryLabel,renderingMode: .alwaysOriginal), statusLabelText: "upper letter (A-Z)")
+    let statusView2 = StatusView(checkImage: UIImage(systemName: "eye.circle")!, statusLabelText: "222")
     
     let button = UIButton(type: .system)
-    let dividerView = UIView()
     
     var password : String? {
         return passwordTextView.passwordTextField.text
@@ -35,11 +37,13 @@ extension ViewController {
         stackView.axis = .vertical
         stackView.spacing = 20
         
-        passwordTextView.translatesAutoresizingMaskIntoConstraints = false
-
         
-        dividerView.translatesAutoresizingMaskIntoConstraints = false
-        dividerView.backgroundColor = .separator
+        passwordTextView.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextView2.translatesAutoresizingMaskIntoConstraints = false
+        
+        statusView1.translatesAutoresizingMaskIntoConstraints = false
+        statusView2.translatesAutoresizingMaskIntoConstraints = false
+
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .filled()
@@ -49,10 +53,11 @@ extension ViewController {
     }
     
     private func layout() {
-        
+      
         stackView.addArrangedSubview(passwordTextView)
-        stackView.addArrangedSubview(dividerView)
-        stackView.addArrangedSubview(PasswordTextView2)
+        stackView.addArrangedSubview(statusView1)
+        stackView.addArrangedSubview(statusView2)
+        stackView.addArrangedSubview(passwordTextView2)
         stackView.addArrangedSubview(button)
         view.addSubview(stackView)
         
