@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-class PasswordTextView: UIView {
+protocol PasswordTextFieldDelegate: AnyObject {
+    func editingChanged(_ sender: PasswordTextField)
+}
+
+class PasswordTextField: UIView {
     
     let passwordTextField = UITextField()
     let dividerView = UIView()
@@ -18,6 +22,8 @@ class PasswordTextView: UIView {
     
     let placeHolderText: String
     let errorLabelIsHidden: Bool
+    
+    weak var delegate: PasswordTextFieldDelegate?
     
     init(placeHolderText: String, errorLabelIsHidden: Bool) {
         self.placeHolderText = placeHolderText
@@ -35,7 +41,7 @@ class PasswordTextView: UIView {
         return CGSize(width: 200, height: 55)
     }
 }
-extension PasswordTextView {
+extension PasswordTextField {
     func style(){
         translatesAutoresizingMaskIntoConstraints = false
 //        backgroundColor = .systemOrange
@@ -121,7 +127,7 @@ extension PasswordTextView {
 }
 
 //Actions
-extension PasswordTextView {
+extension PasswordTextField {
     
     @objc func togglePasswordView(_sender: Any){
         passwordTextField.isSecureTextEntry.toggle()
@@ -129,11 +135,12 @@ extension PasswordTextView {
     }
     
     @objc func textFieldEditingChanged(_ sender: UITextField){
-        print("foo - \(sender.text)")
+//        print("foo - \(sender.text)")
+        delegate?.editingChanged(self)
     }
 }
 // MARK: - UITextFieldDelegate
-extension PasswordTextView: UITextFieldDelegate {
+extension PasswordTextField: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         passwordTextField.endEditing(true)

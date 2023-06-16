@@ -11,13 +11,13 @@ class ViewController: UIViewController {
     
     let stackView = UIStackView()
     let passwordStatusView = PasswordStatusView()
-    let passwordTextView = PasswordTextView(placeHolderText:"New Password",errorLabelIsHidden: true)
-    let passwordTextView2 = PasswordTextView(placeHolderText: "New View",errorLabelIsHidden: true)
+    let passwordTextField = PasswordTextField(placeHolderText:"New Password",errorLabelIsHidden: true)
+    let passwordTextField2 = PasswordTextField(placeHolderText: "New View",errorLabelIsHidden: true)
     let button = UIButton(type: .system)
 
     
     var password : String? {
-        return passwordTextView.passwordTextField.text
+        return passwordTextField.passwordTextField.text
     }
     
     override func viewDidLoad() {
@@ -33,8 +33,9 @@ extension ViewController {
         stackView.axis = .vertical
         stackView.spacing = 20
         
-        passwordTextView.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextView2.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField2.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.delegate = self
 
         passwordStatusView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -47,9 +48,9 @@ extension ViewController {
     
     private func layout() {
 //
-        stackView.addArrangedSubview(passwordTextView)
+        stackView.addArrangedSubview(passwordTextField)
         stackView.addArrangedSubview(passwordStatusView)
-        stackView.addArrangedSubview(passwordTextView2)
+        stackView.addArrangedSubview(passwordTextField2)
         stackView.addArrangedSubview(button)
         view.addSubview(stackView)
         
@@ -60,10 +61,6 @@ extension ViewController {
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2)
 
         ])
-//        NSLayoutConstraint.activate([
-//            passwordStatusView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            passwordStatusView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-//        ])
     }
 }
 //Actions
@@ -72,4 +69,16 @@ extension ViewController {
     
     }
 }
+
+// MARK: - PasswordTextFieldDegate
+extension ViewController: PasswordTextFieldDelegate {
+    func editingChanged(_ sender: PasswordTextField) {
+        if sender === passwordTextField {
+            
+        }
+    }
+    
+    
+}
+
 
