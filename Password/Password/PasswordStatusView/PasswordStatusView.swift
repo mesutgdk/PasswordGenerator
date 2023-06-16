@@ -14,11 +14,11 @@ class PasswordStatusView: UIView {
     
     let stackView = UIStackView()
     
-    let lengthStatusView = StatusView(statusLabelText: "8-32 characters (no spaces)")
-    let uppercaseStatusView = StatusView(statusLabelText: "upper letter (A-Z)")
-    let lowercaseStatusView = StatusView(statusLabelText: "lowercase")
-    let digitStatusView = StatusView(statusLabelText: "digit (0-9)")
-    let specialCharacterStatusView = StatusView(statusLabelText: "special Character(e.g. !@#$%^)")
+    let lengthStatusView = StatusLineView(statusLabelText: "8-32 characters (no spaces)")
+    let uppercaseStatusView = StatusLineView(statusLabelText: "upper letter (A-Z)")
+    let lowercaseStatusView = StatusLineView(statusLabelText: "lowercase")
+    let digitStatusView = StatusLineView(statusLabelText: "digit (0-9)")
+    let specialCharacterStatusView = StatusLineView(statusLabelText: "special Character(e.g. !@#$%^)")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,9 +36,12 @@ class PasswordStatusView: UIView {
 extension PasswordStatusView {
     func style(){
         translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .tertiarySystemFill
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 8
+        stackView.distribution = .equalCentering
         
         lengthStatusView.translatesAutoresizingMaskIntoConstraints = false
         uppercaseStatusView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,15 +50,12 @@ extension PasswordStatusView {
         specialCharacterStatusView.translatesAutoresizingMaskIntoConstraints = false
 
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.textAlignment = .justified
-        statusLabel.textColor = .tertiaryLabel
-        statusLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-        statusLabel.text = "Use at least 3 of 4 Criteria when setting your password:"
-        statusLabel.adjustsFontSizeToFitWidth = true // fazla uzun labellarda sığdırır
         statusLabel.numberOfLines = 0
-        statusLabel.minimumScaleFactor = 0.8
         statusLabel.lineBreakMode = .byWordWrapping
-//        statusLabel.isHidden = errorLabelIsHidden
+        statusLabel.attributedText = makeStatusMessage()
+        
+        layer.cornerRadius = 5
+        clipsToBounds = true
         
     }
     func layout() {
@@ -75,5 +75,23 @@ extension PasswordStatusView {
             trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2),
             bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 2)
         ])
+    }
+}
+//Actions
+extension PasswordStatusView {
+    private func makeStatusMessage() -> NSAttributedString {
+        var plainTextAttributes = [NSAttributedString.Key: AnyObject]()
+        plainTextAttributes[.font] = UIFont.preferredFont(forTextStyle: .subheadline)
+        plainTextAttributes[.foregroundColor] = UIColor.secondaryLabel
+        
+        var boldTextAttributes = [NSAttributedString.Key: AnyObject]()
+        boldTextAttributes[.foregroundColor] = UIColor.label
+        boldTextAttributes[.font] = UIFont.preferredFont(forTextStyle: .subheadline)
+
+        let attrText = NSMutableAttributedString(string: "Use at least ", attributes: plainTextAttributes)
+        attrText.append(NSAttributedString(string: "3 of these 4 ", attributes: boldTextAttributes))
+        attrText.append(NSAttributedString(string: "criteria when setting your password:", attributes: plainTextAttributes))
+
+        return attrText
     }
 }

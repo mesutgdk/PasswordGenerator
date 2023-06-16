@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class StatusView: UIView {
+class StatusLineView: UIView {
     
     let stackView = UIStackView()
     let imageView = UIImageView()
@@ -46,7 +46,7 @@ class StatusView: UIView {
         return CGSize(width: 200, height: 35)
     }
 }
-extension StatusView {
+extension StatusLineView {
     func style(){
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -95,7 +95,7 @@ extension StatusView {
     }
 }
 // Actions
-extension StatusView{
+extension StatusLineView{
     func reset() {
         isCriteriaOK = false
         imageView.image = circleImage

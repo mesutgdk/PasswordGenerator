@@ -10,13 +10,11 @@ import UIKit
 class ViewController: UIViewController {
     
     let stackView = UIStackView()
-    let button = UIButton(type: .system)
-    
     let passwordStatusView = PasswordStatusView()
-    
     let passwordTextView = PasswordTextView(placeHolderText:"New Password",errorLabelIsHidden: false)
     let passwordTextView2 = PasswordTextView(placeHolderText: "New View",errorLabelIsHidden: true)
-    
+    let button = UIButton(type: .system)
+
     
     var password : String? {
         return passwordTextView.passwordTextField.text
@@ -37,14 +35,14 @@ extension ViewController {
         
         passwordTextView.translatesAutoresizingMaskIntoConstraints = false
         passwordTextView2.translatesAutoresizingMaskIntoConstraints = false
-        
+
         passwordStatusView.translatesAutoresizingMaskIntoConstraints = false
     
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .filled()
         button.configuration?.imagePadding = 8 // for indicator spacing
         button.setTitle("Reset Password", for: [])
-        button.addTarget(self, action: #selector(resetPassword), for: .primaryActionTriggered)
+        button.addTarget(self, action: #selector(resetPasswordButtonTapped), for: .primaryActionTriggered)
     }
     
     private func layout() {
@@ -70,8 +68,8 @@ extension ViewController {
 }
 //Actions
 extension ViewController {
-    @objc func resetPassword(){
-        
+    @objc func resetPasswordButtonTapped(){
+    
     }
 }
 
