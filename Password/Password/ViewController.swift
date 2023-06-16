@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     let stackView = UIStackView()
     let passwordStatusView = PasswordStatusView()
-    let passwordTextView = PasswordTextView(placeHolderText:"New Password",errorLabelIsHidden: false)
+    let passwordTextView = PasswordTextView(placeHolderText:"New Password",errorLabelIsHidden: true)
     let passwordTextView2 = PasswordTextView(placeHolderText: "New View",errorLabelIsHidden: true)
     let button = UIButton(type: .system)
 

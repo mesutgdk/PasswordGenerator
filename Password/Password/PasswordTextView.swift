@@ -48,6 +48,7 @@ extension PasswordTextView {
         passwordTextField.delegate = self
         passwordTextField.keyboardType = .asciiCapable
         passwordTextField.attributedPlaceholder = NSAttributedString(string: placeHolderText, attributes: [NSAttributedString.Key.foregroundColor:UIColor.secondaryLabel])
+        passwordTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
@@ -118,6 +119,19 @@ extension PasswordTextView {
         eyeButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
     }
 }
+
+//Actions
+extension PasswordTextView {
+    
+    @objc func togglePasswordView(_sender: Any){
+        passwordTextField.isSecureTextEntry.toggle()
+        eyeButton.isSelected.toggle()
+    }
+    
+    @objc func textFieldEditingChanged(_ sender: UITextField){
+        print("foo - \(sender.text)")
+    }
+}
 // MARK: - UITextFieldDelegate
 extension PasswordTextView: UITextFieldDelegate {
     
@@ -131,14 +145,6 @@ extension PasswordTextView: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-    }
-}
-//Actions
-extension PasswordTextView {
-    
-    @objc func togglePasswordView(_sender: Any){
-        passwordTextField.isSecureTextEntry.toggle()
-        eyeButton.isSelected.toggle()
     }
 }
 
