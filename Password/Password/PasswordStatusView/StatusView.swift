@@ -21,9 +21,9 @@ class StatusView: UIView {
     let xmarkImage = UIImage(systemName: "xmark.circle")!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
     let circleImage = UIImage(systemName: "circle")!.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
     
-    var isCriteriaOK: Bool = false {
+    var isCriteriaOK: Bool = false  {
         didSet {
-            if isCriteriaOK {
+            if isCriteriaOK == true{
                 imageView.image = checkmarkImage
             }else {
                 imageView.image = xmarkImage
@@ -31,18 +31,13 @@ class StatusView: UIView {
         }
     }
     
-    func reset() {
-        isCriteriaOK = false
-        imageView.image = circleImage
-    }
-    
     init(statusLabelText: String) {
         self.statusLabelText = statusLabelText
         
         super.init(frame: .zero)
-        
         style()
         layout()
+        reset()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -61,6 +56,7 @@ extension StatusView {
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
 //        imageView.image = xmarkImage
+       
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
@@ -100,5 +96,8 @@ extension StatusView {
 }
 // Actions
 extension StatusView{
-   
+    func reset() {
+        isCriteriaOK = false
+        imageView.image = circleImage
+    }
 }
