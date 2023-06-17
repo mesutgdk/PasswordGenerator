@@ -50,6 +50,14 @@ extension ViewController {
                 return (false, "Enter your Password")
             }
             
+            // Valid characters
+            let validChars = "abcçdefgğhıijklmnoöprsştuüvwxyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVWXYZ1234567890.,:;@!+-&/?#$₺()"
+            let invalidSet = CharacterSet(charactersIn: validChars).inverted
+            guard text.rangeOfCharacter(from: invalidSet) == nil else {
+                self.passwordStatusView.reset()
+                return (false, "Enter valid special chars .,:;@!+-&/?#$₺() with no spaces")
+            }
+            
             return (true, "")
         }
         passwordTextField.customValidation = newPasswordValidation
