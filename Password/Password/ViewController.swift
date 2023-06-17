@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     
     let stackView = UIStackView()
     let passwordStatusView = PasswordStatusView()
-    let passwordTextField = PasswordTextField(placeHolderText:"New Password",errorLabelIsHidden: true)
-    let passwordTextField2 = PasswordTextField(placeHolderText: "New View",errorLabelIsHidden: true)
+    let passwordTextField = PasswordTextField(placeHolderText:"New Password")
+    let passwordTextField2 = PasswordTextField(placeHolderText: "New View")
     let button = UIButton(type: .system)
 
     
@@ -52,7 +52,7 @@ extension ViewController {
             
             return (true, "")
         }
-        passwordTextField2.customValidation = newPasswordValidation
+        passwordTextField.customValidation = newPasswordValidation
     }
     
     
@@ -109,6 +109,9 @@ extension ViewController: PasswordTextFieldDelegate {
     }
     func editingDidEnd(_ sender: PasswordTextField) {
 //        print("foo- \(sender.passwordTextField.text)")
+        if sender === passwordTextField {
+            _ = passwordTextField.validate()
+        }
     }
     
 }

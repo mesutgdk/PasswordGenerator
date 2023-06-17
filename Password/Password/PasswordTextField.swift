@@ -30,7 +30,7 @@ class PasswordTextField: UIView {
     let eyeButton = UIButton(type: .custom)
     
     let placeHolderText: String
-    let errorLabelIsHidden: Bool
+
     var customValidation: CustomValidation?
     weak var delegate: PasswordTextFieldDelegate?
     
@@ -43,9 +43,8 @@ class PasswordTextField: UIView {
         }
     }
     
-    init(placeHolderText: String, errorLabelIsHidden: Bool) {
+    init(placeHolderText: String) {
         self.placeHolderText = placeHolderText
-        self.errorLabelIsHidden = errorLabelIsHidden
         
         super.init(frame: .zero)
         
@@ -91,7 +90,7 @@ extension PasswordTextField {
         errorLabel.numberOfLines = 0
         errorLabel.minimumScaleFactor = 0.8
         errorLabel.lineBreakMode = .byWordWrapping
-        errorLabel.isHidden = errorLabelIsHidden
+        errorLabel.isHidden = true //errorLabelIsHidden
         
         
         layer.cornerRadius = 5
@@ -187,10 +186,11 @@ extension PasswordTextField {
         return true
     }
     
-    private func showError(_ errorMessage:String) {
+    private func showError(_ errorMessage: String) {
         errorLabel.isHidden = false
-        errorLabel.text = ""
+        errorLabel.text = errorMessage
     }
+    
     private func clearError() {
         errorLabel.isHidden = true
         errorLabel.text = ""
