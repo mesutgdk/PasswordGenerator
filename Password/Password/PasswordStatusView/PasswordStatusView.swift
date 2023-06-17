@@ -120,4 +120,12 @@ extension PasswordStatusView {
             specialCharMet ? specialCharacterStatusView.isCriteriaOK = true : specialCharacterStatusView.reset()
         }
     }
+    
+    func reset (){
+        lengthStatusView.reset()
+        uppercaseStatusView.reset()
+        lowercaseStatusView.reset()
+        digitStatusView.reset()
+        specialCharacterStatusView.reset()
+    }
 }

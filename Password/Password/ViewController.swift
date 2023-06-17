@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    typealias CustomValidation = PasswordTextField.CustomValidation
     
     let stackView = UIStackView()
     let passwordStatusView = PasswordStatusView()
@@ -24,9 +25,37 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         style()
         layout()
+        setup() // recognizeTapGester
     }
 }
 extension ViewController {
+    // MARK: TapGestureRecognizer - Ekrana dokunulduğunda editing'i durdurur
+    private func setup(){
+        setupDissmissKeyboardgesture()
+        setupNewPassword()
+    }
+    private func setupDissmissKeyboardgesture() {
+        let dismissKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_: )))
+        view.addGestureRecognizer(dismissKeyboardTap)
+    }
+    @objc func viewTapped (_ recognizer: UITapGestureRecognizer){
+        view.endEditing(true)   // resign first responder
+    }
+    private func setupNewPassword() {
+        let newPasswordValidation: CustomValidation = { text in
+            
+            //Empty text
+            guard let text = text, !text.isEmpty else {
+                self.passwordStatusView.reset()
+                return (false, "Enter your Password")
+            }
+            
+            return (true, "")
+        }
+        passwordTextField2.customValidation = newPasswordValidation
+    }
+    
+    
     private func style(){
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,11 +101,16 @@ extension ViewController {
 
 // MARK: - PasswordTextFieldDegate
 extension ViewController: PasswordTextFieldDelegate {
+    
     func editingChanged(_ sender: PasswordTextField) {
         if sender === passwordTextField {
             passwordStatusView.updateDisplay(sender.passwordTextField.text ?? "")
         }
     }
+    func editingDidEnd(_ sender: PasswordTextField) {
+//        print("foo- \(sender.passwordTextField.text)")
+    }
+    
 }
 
 
