@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     let stackView = UIStackView()
     let passwordStatusView = PasswordStatusView()
     let passwordTextField = PasswordTextField(placeHolderText:"New Password")
-    let passwordTextField2 = PasswordTextField(placeHolderText: "New View")
+    let passwordTextField2 = PasswordTextField(placeHolderText: "Re-enter new password")
     let button = UIButton(type: .system)
 
     
@@ -33,6 +33,7 @@ extension ViewController {
     private func setup(){
         setupDissmissKeyboardgesture()
         setupNewPassword()
+        setupConfirmPassword()
     }
     private func setupDissmissKeyboardgesture() {
         let dismissKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_: )))
@@ -67,6 +68,22 @@ extension ViewController {
         
         }
         passwordTextField.customValidation = newPasswordValidation
+        passwordTextField.delegate = self
+    }
+    private func setupConfirmPassword() {
+        let confirmPasswordValidation: CustomValidation = { text in
+            guard let text = text, !text.isEmpty else {
+                return (false, "Enter your password.")
+            }
+            guard text == self.passwordTextField.text else {
+                return (false, "Passwords do not match.")
+            }
+            
+            return (true, "")
+        }
+        
+        passwordTextField2.customValidation = confirmPasswordValidation
+        passwordTextField2.delegate = self
     }
     
     
@@ -78,7 +95,7 @@ extension ViewController {
         
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField2.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.delegate = self
+//        passwordTextField.delegate = self // yukarı validate'e aldım
 
         passwordStatusView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -124,7 +141,10 @@ extension ViewController: PasswordTextFieldDelegate {
     func editingDidEnd(_ sender: PasswordTextField) {
 //        print("foo- \(sender.passwordTextField.text)")
         if sender === passwordTextField {
+            passwordStatusView.shouldResetCriteria = false
             _ = passwordTextField.validate()
+        } else if sender == passwordTextField2 {
+            _ = passwordTextField2.validate()
         }
     }
     

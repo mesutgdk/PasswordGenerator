@@ -150,7 +150,7 @@ extension PasswordTextField {
         passwordTextField.isSecureTextEntry.toggle()
         eyeButton.isSelected.toggle()
     }
-    
+    // editlerken yazılanı verir
     @objc func textFieldEditingChanged(_ sender: UITextField){
 //        print("foo - \(sender.text)")
         delegate?.editingChanged(self)

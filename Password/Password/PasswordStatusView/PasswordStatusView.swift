@@ -21,7 +21,7 @@ class PasswordStatusView: UIView {
     let specialCharacterStatusView = StatusLineView(statusLabelText: "special Character(e.g. !@#$%^)")
     
     // used to determine if i reset criteria back to emty state(⚪️)
-    private var shouldResetCriteria: Bool = true
+    var shouldResetCriteria: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -118,6 +118,13 @@ extension PasswordStatusView {
             digitMet ? digitStatusView.isCriteriaOK = true : digitStatusView.reset()
             
             specialCharMet ? specialCharacterStatusView.isCriteriaOK = true : specialCharacterStatusView.reset()
+        }
+        else { // Focus lost (✅ or ❌) eğer yanlışsa yanlış çıkarır X işaretlenir
+            lengthStatusView.isCriteriaOK = lengthAndNoSpaceMet
+            uppercaseStatusView.isCriteriaOK = upperCaseMet
+            lowercaseStatusView.isCriteriaOK = lowerCaseMet
+            digitStatusView.isCriteriaOK = digitMet
+            specialCharacterStatusView.isCriteriaOK = specialCharMet
         }
     }
     
