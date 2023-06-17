@@ -34,6 +34,7 @@ extension ViewController {
         setupDissmissKeyboardgesture()
         setupNewPassword()
         setupConfirmPassword()
+        setupKeyboardHiding()
     }
     private func setupDissmissKeyboardgesture() {
         let dismissKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_: )))
@@ -85,7 +86,10 @@ extension ViewController {
         passwordTextField2.customValidation = confirmPasswordValidation
         passwordTextField2.delegate = self
     }
-    
+    private func setupKeyboardHiding(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     private func style(){
         
@@ -123,12 +127,7 @@ extension ViewController {
         ])
     }
 }
-//Actions
-extension ViewController {
-    @objc func resetPasswordButtonTapped(){
-    
-    }
-}
+
 
 // MARK: - PasswordTextFieldDegate
 extension ViewController: PasswordTextFieldDelegate {
@@ -149,5 +148,18 @@ extension ViewController: PasswordTextFieldDelegate {
     }
     
 }
-
+//Actions 1. Reset button 2. Keyboard Actions
+extension ViewController {
+    @objc func resetPasswordButtonTapped(){
+        
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        view.frame.origin.y = view.frame.origin.y - 200
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+}
 
