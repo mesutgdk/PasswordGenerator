@@ -20,6 +20,9 @@ class PasswordStatusView: UIView {
     let digitStatusView = StatusLineView(statusLabelText: "digit (0-9)")
     let specialCharacterStatusView = StatusLineView(statusLabelText: "special Character(e.g. !@#$%^)")
     
+    // used to determine if i reset criteria back to emty state(⚪️)
+    private var shouldResetCriteria: Bool = true
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -93,5 +96,19 @@ extension PasswordStatusView {
         attrText.append(NSAttributedString(string: "criteria when setting your password:", attributes: plainTextAttributes))
 
         return attrText
+    }
+}
+
+extension PasswordStatusView {
+    func updateDisplay(_ text: String) {
+        let lengthAndNoSpaceMet = PasswordStatsCriteria.lenghtAndNoSpaceMet(text)
+        let upperCaseMet = PasswordStatsCriteria.upperCaseMet(text)
+        
+        if shouldResetCriteria {
+            // inline validation (✅ or ⚪️ ) ternitariy operator
+            lengthAndNoSpaceMet ? lengthStatusView.isCriteriaOK = true : lengthStatusView.reset()
+            
+            upperCaseMet ? uppercaseStatusView.isCriteriaOK = true : uppercaseStatusView.reset()
+        }
     }
 }
