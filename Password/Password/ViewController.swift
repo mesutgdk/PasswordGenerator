@@ -58,7 +58,13 @@ extension ViewController {
                 return (false, "Enter valid special chars .,:;@!+-&/?#$₺() with no spaces")
             }
             
+            // Criteria Met
+            self.passwordStatusView.updateDisplay(text)
+            if !self.passwordStatusView.validate(text) {
+                return (false, "Your password must meet the requirement below")
+            }
             return (true, "")
+        
         }
         passwordTextField.customValidation = newPasswordValidation
     }

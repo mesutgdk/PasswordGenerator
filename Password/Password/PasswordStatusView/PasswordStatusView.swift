@@ -121,6 +121,23 @@ extension PasswordStatusView {
         }
     }
     
+    func validate(_ text:String) -> Bool {
+        let upperCaseMet = PasswordStatsCriteria.upperCaseMet(text)
+        let lowerCaseMet = PasswordStatsCriteria.lowercaseMet(text)
+        let digitMet = PasswordStatsCriteria.digitMet(text)
+        let specialCharMet = PasswordStatsCriteria.specialCharacterMet(text)
+        
+        let checkArray = [upperCaseMet, lowerCaseMet, digitMet, specialCharMet]
+        let trueNum = checkArray.filter {$0 == true} // array içindeki doğru sayısını verecek
+        let lengthAndNoSpaceMet = PasswordStatsCriteria.lenghtAndNoSpaceMet(text)
+        
+        if lengthAndNoSpaceMet && trueNum.count >= 3 {
+            return true
+        }
+        
+        return false
+    }
+    
     func reset (){
         lengthStatusView.reset()
         uppercaseStatusView.reset()
