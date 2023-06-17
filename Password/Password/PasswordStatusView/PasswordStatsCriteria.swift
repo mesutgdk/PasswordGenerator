@@ -24,5 +24,18 @@ struct PasswordStatsCriteria {
     static func upperCaseMet(_ text: String) -> Bool {
         text.range(of: "[A-Z]+", options: .regularExpression) != nil
     }
+    // küçük harf var mı ?
+    static func lowercaseMet(_ text: String) -> Bool {
+        text.range(of: "[a-z]+", options: .regularExpression) != nil
+    }
+    // rakam var mı ?
+    static func digitMet(_ text: String) -> Bool {
+        text.range(of: "[0-9]+", options: .regularExpression) != nil
+    }
+    // özel karakter var mı ?
+    static func specialCharacterMet(_ text: String) -> Bool {
+        // regex escaped @:?!()$#,.\/
+        text.range(of: "[.*[^A-Za-z0-9].*]+", options: .regularExpression) != nil
+    }
     
 }
