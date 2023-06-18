@@ -184,7 +184,7 @@ extension ViewController {
     }
     
     // reset buton action, gives alert if successfull
-    @objc func resetPasswordButtonTapped(){
+    @objc func resetPasswordButtonTapped(sender: UIButton){
         view.endEditing(true)
         
         let isValidPassword1 = passwordTextField.validate()
@@ -207,3 +207,15 @@ extension ViewController {
     
 }
 
+// MARK: Tests
+extension ViewController {
+    var newPasswordText: String? {
+        get { return passwordTextField.text }
+        set { passwordTextField.text = newValue}
+    }
+    
+    var confirmPasswordText: String? {
+        get { return passwordTextField2.text }
+        set { passwordTextField2.text = newValue}
+    }
+}
