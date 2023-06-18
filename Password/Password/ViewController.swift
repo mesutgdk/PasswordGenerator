@@ -161,7 +161,7 @@ extension ViewController {
               let currentTextField = UIResponder.currentFirst() as? UITextField else {return}
         
 //        print("foo - userInfo \(userInfo)")
-        print("foo - keyboardFrame \(keyboardFrame)")
+//        print("foo - keyboardFrame \(keyboardFrame)")
 //        print("foo - currenttextField \(currentTextField)")
         
         // check if the top of the keyboard is above the bottom of the currently focused textbox
@@ -175,11 +175,10 @@ extension ViewController {
         // if textField bottom is below keyboard bottom - push the frame up
         if textFieldBottomY > keyboardTopY {
             //adjust view up
-            print ("foo - adjust view!")
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY/2) * -1
+            view.frame.origin.y = newFrameY
         }
-        
-        print("foo - currentTextFieldFrame: \(currentTextField.frame)")
-        print("foo - convertTextFieldFrame: \(convertedTextFieldFrame)")
 
     }
     
