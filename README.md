@@ -13,3 +13,7 @@ This app empowers users by providing an easy and efficient way to assess the str
 * Real-time Feedback: PasswordGenerator provides instant feedback, eliminating the need to rely on guesswork or complicated password rules. Users can see the results immediately and make informed decisions on whether to strengthen their passwords further.
 
 * Open Source and Privacy-Focused: SecurePassChecker is an open-source project, enabling users to inspect the code and contribute to its development. 
+
+* Additionally, PasswordGenerator incorporates an autolayout feature that dynamically adjusts the interface based on the keyboard's visibility. When the keyboard appears on the screen, the app intelligently detects its dimensions and automatically adapts the layout to ensure optimal usability.
+
+Enjoy a hassle-free password generation experience with PasswordGenerator's autolayout feature, which automatically adapts to the presence of the keyboard, ensuring a smooth and user-friendly interface.
