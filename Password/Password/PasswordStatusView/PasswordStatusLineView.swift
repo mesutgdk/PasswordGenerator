@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class StatusLineView: UIView {
+class PasswordStatusLineView: UIView {
     
     let stackView = UIStackView()
     let imageView = UIImageView()
@@ -46,7 +46,7 @@ class StatusLineView: UIView {
         return CGSize(width: 200, height: 35)
     }
 }
-extension StatusLineView {
+extension PasswordStatusLineView {
     func style(){
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -95,7 +95,7 @@ extension StatusLineView {
     }
 }
 // Actions
-extension StatusLineView{
+extension PasswordStatusLineView{
     func reset() {
         isCriteriaOK = false
         imageView.image = circleImage

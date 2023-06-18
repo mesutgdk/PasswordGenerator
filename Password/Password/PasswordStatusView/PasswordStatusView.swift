@@ -14,11 +14,11 @@ class PasswordStatusView: UIView {
     
     let stackView = UIStackView()
     
-    let lengthStatusView = StatusLineView(statusLabelText: "8-32 characters (no spaces)")
-    let uppercaseStatusView = StatusLineView(statusLabelText: "upper letter (A-Z)")
-    let lowercaseStatusView = StatusLineView(statusLabelText: "lowercase")
-    let digitStatusView = StatusLineView(statusLabelText: "digit (0-9)")
-    let specialCharacterStatusView = StatusLineView(statusLabelText: "special Character(e.g. !@#$%^)")
+    let lengthStatusView = PasswordStatusLineView(statusLabelText: "8-32 characters (no spaces)")
+    let uppercaseStatusView = PasswordStatusLineView(statusLabelText: "upper letter (A-Z)")
+    let lowercaseStatusView = PasswordStatusLineView(statusLabelText: "lowercase")
+    let digitStatusView = PasswordStatusLineView(statusLabelText: "digit (0-9)")
+    let specialCharacterStatusView = PasswordStatusLineView(statusLabelText: "special Character(e.g. !@#$%^)")
     
     // used to determine if i reset criteria back to emty state(⚪️)
     var shouldResetCriteria: Bool = true
@@ -151,5 +151,20 @@ extension PasswordStatusView {
         lowercaseStatusView.reset()
         digitStatusView.reset()
         specialCharacterStatusView.reset()
+    }
+}
+
+// MARK: Tests
+extension PasswordStatusLineView {
+    var isCheckMarkImage: Bool {
+        return imageView.image == checkmarkImage
+    }
+
+    var isXmarkImage: Bool {
+        return imageView.image == xmarkImage
+    }
+
+    var isResetImage: Bool {
+        return imageView.image == circleImage
     }
 }
