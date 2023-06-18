@@ -6,7 +6,7 @@ This app empowers users by providing an easy and efficient way to assess the str
 
 ## Key Features:
 
-* Password Strength Analysis: SecurePassChecker analyzes passwords based on a variety of factors, including length, complexity and character variety. It performs an extensive evaluation to determine the strength level of each password.
+* Password Strength Analysis: PasswordGenerator analyzes passwords based on a variety of factors, including length, complexity and character variety. It performs an extensive evaluation to determine the strength level of each password.
 
 * Interactive User Interface: The app offers an intuitive and user-friendly interface, allowing users to input passwords effortlessly. The evaluation results are presented in a clear and understandable format, enabling users to quickly comprehend the strengths and weaknesses of their passwords.
 
