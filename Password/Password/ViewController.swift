@@ -168,17 +168,18 @@ extension ViewController {
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         // let textFieldBottomY = currentTextField.frame.origin.y + currentTextField.frame.size.height
         // textfield kendi koordinat sisteminde dönüyor, çalışmıyor, yukarıdaki yerine parent view koordinat sistemine çevireceğiz
-        let convertedTextFieldFrame = view.convert(currentTextField.frame, to: currentTextField.superview)
+        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
         
-        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+        let textFieldBottomY = (convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height)
         
         // if textField bottom is below keyboard bottom - push the frame up
         if textFieldBottomY > keyboardTopY {
             //adjust view up
-            print ("adjust view!")
+            print ("foo - adjust view!")
         }
         
         print("foo - currentTextFieldFrame: \(currentTextField.frame)")
+        print("foo - convertTextFieldFrame: \(convertedTextFieldFrame)")
 
     }
     
