@@ -44,7 +44,7 @@ extension ViewController {
         view.endEditing(true)   // resign first responder
     }
     private func setupNewPassword() {
-        let newPasswordValidation: CustomValidation = { text in
+        let firstPasswordValidation: CustomValidation = { text in
             
             //Empty text
             guard let text = text, !text.isEmpty else {
@@ -68,13 +68,13 @@ extension ViewController {
             return (true, "")
         
         }
-        passwordTextField.customValidation = newPasswordValidation
+        passwordTextField.customValidation = firstPasswordValidation
         passwordTextField.delegate = self
     }
     private func setupConfirmPassword() {
-        let confirmPasswordValidation: CustomValidation = { text in
+        let secondPasswordValidation: CustomValidation = { text in
             guard let text = text, !text.isEmpty else {
-                return (false, "Enter your password.")
+                return (false, "Enter your Password.")
             }
             guard text == self.passwordTextField.text else {
                 return (false, "Passwords do not match.")
@@ -83,7 +83,7 @@ extension ViewController {
             return (true, "")
         }
         
-        passwordTextField2.customValidation = confirmPasswordValidation
+        passwordTextField2.customValidation = secondPasswordValidation
         passwordTextField2.delegate = self
     }
     private func setupKeyboardHiding(){
@@ -209,12 +209,12 @@ extension ViewController {
 
 // MARK: Tests
 extension ViewController {
-    var newPasswordText: String? {
+    var PasswordText1: String? {
         get { return passwordTextField.text }
         set { passwordTextField.text = newValue}
     }
     
-    var confirmPasswordText: String? {
+    var PasswordText2: String? {
         get { return passwordTextField2.text }
         set { passwordTextField2.text = newValue}
     }
