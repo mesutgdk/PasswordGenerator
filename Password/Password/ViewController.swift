@@ -148,12 +148,8 @@ extension ViewController: PasswordTextFieldDelegate {
     }
     
 }
-//Actions 1. Reset button 2. Keyboard Actions
+//Actions 1. Keyboard Actions 2. Reset button
 extension ViewController {
-    @objc func resetPasswordButtonTapped(){
-        
-    }
-    
     @objc func keyboardWillShow(sender: NSNotification) { // keyboard bilgilerini burda alıyoruz
 //        view.frame.origin.y = view.frame.origin.y - 200 // it push all view 200 pxl up
         guard let userInfo = sender.userInfo,
@@ -167,6 +163,7 @@ extension ViewController {
         // check if the top of the keyboard is above the bottom of the currently focused textbox
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         // let textFieldBottomY = currentTextField.frame.origin.y + currentTextField.frame.size.height
+        
         // textfield kendi koordinat sisteminde dönüyor, çalışmıyor, yukarıdaki yerine parent view koordinat sistemine çevireceğiz
         let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
         
@@ -185,5 +182,28 @@ extension ViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
     }
+    
+    // reset buton action, gives alert if successfull
+    @objc func resetPasswordButtonTapped(){
+        view.endEditing(true)
+        
+        let isValidPassword1 = passwordTextField.validate()
+        let isValidPassword2 = passwordTextField2.validate()
+        
+        if isValidPassword1 && isValidPassword2 {
+           showAlert(title: "Success", message: "You have successfully changed your password.")
+        }
+    }
+    
+    private func showAlert (title: String, message: String) {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        alert.title = title
+        alert.message = message
+        
+        present(alert, animated: true)
+    }
+    
 }
 
