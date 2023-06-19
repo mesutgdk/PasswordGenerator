@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     let passwordTextField = PasswordTextField(placeHolderText:"New Password")
     let passwordTextField2 = PasswordTextField(placeHolderText: "Re-enter new password")
     let button = UIButton(type: .system)
+    
+    var alert: UIAlertController? // it is added to be able to be testable
 
     
     var password : String? {
@@ -195,8 +197,9 @@ extension ViewController {
         }
     }
     
-    private func showAlert (title: String, message: String) {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+    func showAlert (title: String, message: String) {
+        alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        guard let alert = alert else {return}
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         
         alert.title = title
@@ -209,12 +212,12 @@ extension ViewController {
 
 // MARK: Tests
 extension ViewController {
-    var PasswordText1: String? {
+    var passwordText1: String? {
         get { return passwordTextField.text }
         set { passwordTextField.text = newValue}
     }
     
-    var PasswordText2: String? {
+    var passwordText2: String? {
         get { return passwordTextField2.text }
         set { passwordTextField2.text = newValue}
     }
