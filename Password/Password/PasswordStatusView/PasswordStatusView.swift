@@ -19,7 +19,7 @@ class PasswordStatusView: UIView {
     let lowercaseStatusView = PasswordStatusLineView(statusLabelText: "lowercase")
     let digitStatusView = PasswordStatusLineView(statusLabelText: "digit (0-9)")
     let specialCharacterStatusView = PasswordStatusLineView(statusLabelText: "special character(e.g. !@#$%^)")
-    let noSequentialCharacterStatusView = PasswordStatusLineView(statusLabelText: "no sequential characters(e.g. 123abc)")
+    let noRepeatedCharacterStatusView = PasswordStatusLineView(statusLabelText: "no repeted characters(e.g. 111aaa)")
     
     // used to determine if i reset criteria back to emty state(⚪️)
     var shouldResetCriteria: Bool = true
@@ -52,7 +52,7 @@ extension PasswordStatusView {
         lowercaseStatusView.translatesAutoresizingMaskIntoConstraints = false
         digitStatusView.translatesAutoresizingMaskIntoConstraints = false
         specialCharacterStatusView.translatesAutoresizingMaskIntoConstraints = false
-        noSequentialCharacterStatusView.translatesAutoresizingMaskIntoConstraints = false
+        noRepeatedCharacterStatusView.translatesAutoresizingMaskIntoConstraints = false
 
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.numberOfLines = 0
@@ -69,7 +69,7 @@ extension PasswordStatusView {
         stackView.addArrangedSubview(uppercaseStatusView)
         stackView.addArrangedSubview(lowercaseStatusView)
         stackView.addArrangedSubview(digitStatusView)
-        stackView.addArrangedSubview(noSequentialCharacterStatusView)
+        stackView.addArrangedSubview(noRepeatedCharacterStatusView)
         stackView.addArrangedSubview(specialCharacterStatusView)
         
         addSubview(stackView)
@@ -109,7 +109,7 @@ extension PasswordStatusView {
         let lowerCaseMet = PasswordStatsCriteria.lowercaseMet(text)
         let digitMet = PasswordStatsCriteria.digitMet(text)
         let specialCharMet = PasswordStatsCriteria.specialCharacterMet(text)
-        let nonSequentialNonRepaetedCharMet = PasswordStatsCriteria.hasNoSequentialAndNoRepeatedCharMet(text)
+        let nonRepaetedCharMet = PasswordStatsCriteria.nonRepeatedCharacters(text)
         
         if shouldResetCriteria {
             // inline validation (✅ or ⚪️ ) ternitariy operator
@@ -123,7 +123,7 @@ extension PasswordStatusView {
             
             specialCharMet ? specialCharacterStatusView.isCriteriaOK = true : specialCharacterStatusView.reset()
             
-            nonSequentialNonRepaetedCharMet ? noSequentialCharacterStatusView.isCriteriaOK = true : noSequentialCharacterStatusView.reset()
+            nonRepaetedCharMet ? noRepeatedCharacterStatusView.isCriteriaOK = true : noRepeatedCharacterStatusView.reset()
         }
         else { // Focus lost (✅ or ❌) eğer yanlışsa yanlış çıkarır X işaretlenir
             lengthStatusView.isCriteriaOK = lengthAndNoSpaceMet
@@ -131,7 +131,7 @@ extension PasswordStatusView {
             lowercaseStatusView.isCriteriaOK = lowerCaseMet
             digitStatusView.isCriteriaOK = digitMet
             specialCharacterStatusView.isCriteriaOK = specialCharMet
-            noSequentialCharacterStatusView.isCriteriaOK = nonSequentialNonRepaetedCharMet
+            noRepeatedCharacterStatusView.isCriteriaOK = nonRepaetedCharMet
         }
         }
        
@@ -142,7 +142,7 @@ extension PasswordStatusView {
         let lowerCaseMet = PasswordStatsCriteria.lowercaseMet(text)
         let digitMet = PasswordStatsCriteria.digitMet(text)
         let specialCharMet = PasswordStatsCriteria.specialCharacterMet(text)
-        let nonSequentialCharMet = PasswordStatsCriteria.hasNoConsecutiveOrRepeatedCharacters(text)
+        let nonSequentialCharMet = PasswordStatsCriteria.nonRepeatedCharacters(text)
         
         let checkArray = [upperCaseMet, lowerCaseMet, digitMet, specialCharMet, nonSequentialCharMet]
         let trueNum = checkArray.filter {$0 == true} // array içindeki doğru sayısını verecek
@@ -161,7 +161,7 @@ extension PasswordStatusView {
         lowercaseStatusView.reset()
         digitStatusView.reset()
         specialCharacterStatusView.reset()
-        noSequentialCharacterStatusView.reset()
+        noRepeatedCharacterStatusView.reset()
     }
 }
 

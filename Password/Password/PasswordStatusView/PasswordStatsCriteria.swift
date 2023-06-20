@@ -38,32 +38,11 @@ struct PasswordStatsCriteria {
         text.range(of: "[.*[^A-Za-z0-9].*]+", options: .regularExpression) != nil
     }
     // ardışık ve tekrarlanan var mı?
-    static func hasNoConsecutiveOrRepeatedCharacters(_ text: String) -> Bool {
-        text.range(of:"(.)\\1", options: .regularExpression) == nil
-    }
-    static func hasNoSequentialCharacters(_ text: String) -> Bool {
-        let passwordLength = text.count
-        
-        if passwordLength >= 3 {
-            for i in 0..<(passwordLength - 2) {
-                let firstChar = text[text.index(text.startIndex, offsetBy: i)]
-                let secondChar = text[text.index(text.startIndex, offsetBy: i + 1)]
-                let thirdChar = text[text.index(text.startIndex, offsetBy: i + 2)]
-                
-                if let firstCharASCII = firstChar.asciiValue,
-                   let secondCharASCII = secondChar.asciiValue,
-                   let thirdCharASCII = thirdChar.asciiValue {
-                    if secondCharASCII == firstCharASCII + 1 && thirdCharASCII == secondCharASCII + 1 {
-                        return false
-                    }
-                }
-            }
+    static func nonRepeatedCharacters(_ text: String) -> Bool {
+        if text == "" {
+            return false
         }
-       
-        return true
-    }
-    static func hasNoSequentialAndNoRepeatedCharMet(_ text: String) -> Bool {
-        hasNoConsecutiveOrRepeatedCharacters(text) && hasNoSequentialAndNoRepeatedCharMet(text)
+        return text.range(of:"(\\w)\\1{2}", options: .regularExpression) == nil
     }
     
 }
