@@ -17,3 +17,10 @@ This app empowers users by providing an easy and efficient way to assess the str
 * Additionally, PasswordGenerator incorporates an autolayout feature that dynamically adjusts the interface based on the keyboard's visibility. When the keyboard appears on the screen, the app intelligently detects its dimensions and automatically adapts the layout to ensure optimal usability.
 
 Enjoy a hassle-free password generation experience with PasswordGenerator's autolayout feature, which automatically adapts to the presence of the keyboard, ensuring a smooth and user-friendly interface.
+
+![ezgif com-video-to-gif](https://github.com/mesutgdk/PasswordGenerator/assets/112901255/55548d02-91c8-4146-b093-2136f8ca6a81)
+
+![ezgif com-video-to-gif (1)](https://github.com/mesutgdk/PasswordGenerator/assets/112901255/a3ca4661-650e-4fbc-9b27-990024bf5e95)
+
+![ezgif com-video-to-gif (2)](https://github.com/mesutgdk/PasswordGenerator/assets/112901255/5a52c093-fb51-49ec-a3b4-600eae9d03a1)
+
