@@ -109,7 +109,7 @@ extension PasswordStatusView {
         let lowerCaseMet = PasswordStatsCriteria.lowercaseMet(text)
         let digitMet = PasswordStatsCriteria.digitMet(text)
         let specialCharMet = PasswordStatsCriteria.specialCharacterMet(text)
-//        let noSequentialCharMet =
+        let nonSequentialNonRepaetedCharMet = PasswordStatsCriteria.hasNoSequentialAndNoRepeatedCharMet(text)
         
         if shouldResetCriteria {
             // inline validation (✅ or ⚪️ ) ternitariy operator
@@ -122,6 +122,8 @@ extension PasswordStatusView {
             digitMet ? digitStatusView.isCriteriaOK = true : digitStatusView.reset()
             
             specialCharMet ? specialCharacterStatusView.isCriteriaOK = true : specialCharacterStatusView.reset()
+            
+            nonSequentialNonRepaetedCharMet ? noSequentialCharacterStatusView.isCriteriaOK = true : noSequentialCharacterStatusView.reset()
         }
         else { // Focus lost (✅ or ❌) eğer yanlışsa yanlış çıkarır X işaretlenir
             lengthStatusView.isCriteriaOK = lengthAndNoSpaceMet
@@ -129,20 +131,24 @@ extension PasswordStatusView {
             lowercaseStatusView.isCriteriaOK = lowerCaseMet
             digitStatusView.isCriteriaOK = digitMet
             specialCharacterStatusView.isCriteriaOK = specialCharMet
+            noSequentialCharacterStatusView.isCriteriaOK = nonSequentialNonRepaetedCharMet
         }
-    }
+        }
+       
+    
     
     func validate(_ text:String) -> Bool {
         let upperCaseMet = PasswordStatsCriteria.upperCaseMet(text)
         let lowerCaseMet = PasswordStatsCriteria.lowercaseMet(text)
         let digitMet = PasswordStatsCriteria.digitMet(text)
         let specialCharMet = PasswordStatsCriteria.specialCharacterMet(text)
+        let nonSequentialCharMet = PasswordStatsCriteria.hasNoConsecutiveOrRepeatedCharacters(text)
         
-        let checkArray = [upperCaseMet, lowerCaseMet, digitMet, specialCharMet]
+        let checkArray = [upperCaseMet, lowerCaseMet, digitMet, specialCharMet, nonSequentialCharMet]
         let trueNum = checkArray.filter {$0 == true} // array içindeki doğru sayısını verecek
         let lengthAndNoSpaceMet = PasswordStatsCriteria.lenghtAndNoSpaceMet(text)
         
-        if lengthAndNoSpaceMet && trueNum.count >= 3 {
+        if lengthAndNoSpaceMet && trueNum.count >= 4 {
             return true
         }
         
@@ -155,6 +161,7 @@ extension PasswordStatusView {
         lowercaseStatusView.reset()
         digitStatusView.reset()
         specialCharacterStatusView.reset()
+        noSequentialCharacterStatusView.reset()
     }
 }
 
