@@ -80,5 +80,13 @@ class PasswordOtherStatsTests: XCTestCase {
         XCTAssertTrue(PasswordStatsCriteria.specialCharacterMet("Arise, arise, Riders of Théoden!"))
     }
     
+    func testNonRepeatedCharacters() {
+        // Şifrede üç ardışık tekrarlayan karakter yok
+        XCTAssertTrue(PasswordStatsCriteria.nonRepeatedCharacters("AAhmet!!''++"))
+    }
+    func testRepeatedCharacters() {
+        // Şifrede üç ardışık tekrarlayan karakter var
+        XCTAssertFalse(PasswordStatsCriteria.nonRepeatedCharacters("mesut111"))
+    }
 }
 
