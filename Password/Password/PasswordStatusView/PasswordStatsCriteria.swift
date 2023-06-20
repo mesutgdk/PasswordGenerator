@@ -37,5 +37,6 @@ struct PasswordStatsCriteria {
         // regex escaped @:?!()$#,.\/
         text.range(of: "[.*[^A-Za-z0-9].*]+", options: .regularExpression) != nil
     }
+
     
 }

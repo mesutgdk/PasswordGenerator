@@ -18,7 +18,8 @@ class PasswordStatusView: UIView {
     let uppercaseStatusView = PasswordStatusLineView(statusLabelText: "upper letter (A-Z)")
     let lowercaseStatusView = PasswordStatusLineView(statusLabelText: "lowercase")
     let digitStatusView = PasswordStatusLineView(statusLabelText: "digit (0-9)")
-    let specialCharacterStatusView = PasswordStatusLineView(statusLabelText: "special Character(e.g. !@#$%^)")
+    let specialCharacterStatusView = PasswordStatusLineView(statusLabelText: "special character(e.g. !@#$%^)")
+    let noSequentialCharacterStatusView = PasswordStatusLineView(statusLabelText: "no sequential characters(e.g. 123abc)")
     
     // used to determine if i reset criteria back to emty state(⚪️)
     var shouldResetCriteria: Bool = true
@@ -51,6 +52,7 @@ extension PasswordStatusView {
         lowercaseStatusView.translatesAutoresizingMaskIntoConstraints = false
         digitStatusView.translatesAutoresizingMaskIntoConstraints = false
         specialCharacterStatusView.translatesAutoresizingMaskIntoConstraints = false
+        noSequentialCharacterStatusView.translatesAutoresizingMaskIntoConstraints = false
 
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.numberOfLines = 0
@@ -67,6 +69,7 @@ extension PasswordStatusView {
         stackView.addArrangedSubview(uppercaseStatusView)
         stackView.addArrangedSubview(lowercaseStatusView)
         stackView.addArrangedSubview(digitStatusView)
+        stackView.addArrangedSubview(noSequentialCharacterStatusView)
         stackView.addArrangedSubview(specialCharacterStatusView)
         
         addSubview(stackView)
@@ -106,6 +109,7 @@ extension PasswordStatusView {
         let lowerCaseMet = PasswordStatsCriteria.lowercaseMet(text)
         let digitMet = PasswordStatsCriteria.digitMet(text)
         let specialCharMet = PasswordStatsCriteria.specialCharacterMet(text)
+//        let noSequentialCharMet =
         
         if shouldResetCriteria {
             // inline validation (✅ or ⚪️ ) ternitariy operator
