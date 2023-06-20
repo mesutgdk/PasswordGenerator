@@ -19,7 +19,7 @@ class PasswordStatusView: UIView {
     let lowercaseStatusView = PasswordStatusLineView(statusLabelText: "lowercase")
     let digitStatusView = PasswordStatusLineView(statusLabelText: "digit (0-9)")
     let specialCharacterStatusView = PasswordStatusLineView(statusLabelText: "special character(e.g. !@#$%^)")
-    let noRepeatedCharacterStatusView = PasswordStatusLineView(statusLabelText: "no repeted characters(e.g. 111aaa)")
+    let noRepeatedCharacterStatusView = PasswordStatusLineView(statusLabelText: "non-repeated characters(e.g. 111aaa)")
     
     // used to determine if i reset criteria back to emty state(⚪️)
     var shouldResetCriteria: Bool = true
@@ -95,7 +95,7 @@ extension PasswordStatusView {
         boldTextAttributes[.font] = UIFont.preferredFont(forTextStyle: .subheadline)
 
         let attrText = NSMutableAttributedString(string: "Use at least ", attributes: plainTextAttributes)
-        attrText.append(NSAttributedString(string: "3 of these 4 ", attributes: boldTextAttributes))
+        attrText.append(NSAttributedString(string: "4 of these 5 ", attributes: boldTextAttributes))
         attrText.append(NSAttributedString(string: "criteria when setting your password:", attributes: plainTextAttributes))
 
         return attrText
