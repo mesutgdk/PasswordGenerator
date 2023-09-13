@@ -1,8 +1,10 @@
 # Password Generator
 
-PasswordGenerator is a powerful and user-friendly password evaluation app designed to help users create strong and secure passwords. With increasing concerns about online security, it's crucial to have robust passwords that protect personal information and prevent unauthorized access to sensitive data
+PasswordGenerator⌨️ is a powerful and user-friendly password evaluation app designed to help users create strong and secure passwords.
+With increasing concerns about online security, it's crucial to have robust passwords that protect personal information and prevent unauthorized access to sensitive data.
 
-This app empowers users by providing an easy and efficient way to assess the strength of their passwords. By simply inputting a password, users receive instant feedback on its overall security level and whether it meets the recommended criteria for a strong password.
+This app empowers users by providing an easy and efficient way to assess the strength of their passwords.
+By simply inputting a password, users receive instant feedback on its overall security level and whether it meets the recommended criteria for a strong password.
 
 ## Key Features:
 
