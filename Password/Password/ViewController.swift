@@ -152,7 +152,7 @@ extension ViewController: PasswordTextFieldDelegate {
 }
 //Actions 1. Keyboard Actions 2. Reset button
 extension ViewController {
-    @objc func keyboardWillShow(sender: NSNotification) { // keyboard bilgilerini burda alıyoruz
+    @objc func keyboardWillShow(sender: NSNotification) { // keyboard bilgilerini burdan alıyoruz
 //        view.frame.origin.y = view.frame.origin.y - 200 // it push all view 200 pxl up
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,

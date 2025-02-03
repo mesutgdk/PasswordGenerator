@@ -19,6 +19,7 @@
 		63A13B852A3A4FC200285909 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B842A3A4FC200285909 /* PasswordTextField.swift */; };
 		63A13B872A3B8FCA00285909 /* PasswordStatusLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B862A3B8FCA00285909 /* PasswordStatusLineView.swift */; };
 		63A13B8A2A3BAB3F00285909 /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A13B892A3BAB3F00285909 /* PasswordStatusView.swift */; };
+		63C19FFC2D50E24300615454 /* UIViewCont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C19FFB2D50E24300615454 /* UIViewCont+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		63A13B842A3A4FC200285909 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		63A13B862A3B8FCA00285909 /* PasswordStatusLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusLineView.swift; sourceTree = "<group>"; };
 		63A13B892A3BAB3F00285909 /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
+		63C19FFB2D50E24300615454 /* UIViewCont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewCont+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				632BEC532A3EF37B001DE890 /* UIResponder+Utils.swift */,
+				63C19FFB2D50E24300615454 /* UIViewCont+Extension.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			files = (
 				63A13B722A39CBEB00285909 /* ViewController.swift in Sources */,
 				632BEC542A3EF37B001DE890 /* UIResponder+Utils.swift in Sources */,
+				63C19FFC2D50E24300615454 /* UIViewCont+Extension.swift in Sources */,
 				63A13B852A3A4FC200285909 /* PasswordTextField.swift in Sources */,
 				63A13B872A3B8FCA00285909 /* PasswordStatusLineView.swift in Sources */,
 				632BEC512A3CF8F5001DE890 /* PasswordStatsCriteria.swift in Sources */,

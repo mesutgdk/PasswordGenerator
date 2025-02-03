@@ -17,7 +17,7 @@ extension UIResponder {
     // - Returns: the curren UIresponder if it exits
     static func currentFirst () -> UIResponder? {
         Static.responder = nil
-        // it fires an event-sendin an action to responder chain, and traping and setting itself
+        // it fires an event-sending an action to responder chain, and traping and setting itself
         UIApplication.shared.sendAction(#selector(UIResponder._trap), to: nil, from: nil, for: nil)
         return Static.responder
     }
