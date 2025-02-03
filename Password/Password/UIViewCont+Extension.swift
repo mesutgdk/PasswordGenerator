@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ViewController {
+extension UIViewController {
 //    @objc func keyboardWillShow(sender: NSNotification) { // keyboard bilgilerini burdan alıyoruz
 //        //        view.frame.origin.y = view.frame.origin.y - 200 // it push all view 200 pxl up
 //        guard let userInfo = sender.userInfo,
